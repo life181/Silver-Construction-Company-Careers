@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Silver Construction Company — Job Application</title>
+  <meta name="description" content="Apply for exciting vacancies at Silver Construction Company. Graduates from 2023, 2024, or 2025 only. Locations: Bahirdar, Gondar, Mekele." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #10152a;
+      --bg-soft: #1c2240;
+      --card: #141b36;
+      --glass: rgba(255,255,255,0.08);
+      --glass-2: rgba(255,255,255,0.12);
+      --accent: #5eead4;
+      --accent-2: #7c3aed;
+      --accent-3: #ffb86b;
+      --accent-glow: #c084fc;
+      --text: #f3f6fd;
+      --muted: #b7c0d8;
+      --ring: rgba(94,234,212,.55);
+      --shadow: 0 8px 32px rgba(124,58,237,0.13), 0 1.5px 8px rgba(94,234,212,0.10);
+      --shadow-soft: 0 6px 20px rgba(100,100,180,0.13);
+      --ok: #22d3ee;
+      --danger: #f87171;
+      --warning: #fbbf24;
+      --info: #60a5fa;
+      --grad-1: #5eead4;
+      --grad-2: #818cf8;
+      --grad-3: #f472b6;
+      --grad-4: #fbbf24;
+    }
+
+    html, body { height: 100%; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1400px 700px at 10% -10%, #7c3aed11, transparent 60%),
+        radial-gradient(900px 700px at 110% 20%, #5eead422, transparent 70%),
+        linear-gradient(120deg, #181e41 0%, #10152a 100%);
+      background-attachment: fixed;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Particle background effect */
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(18px, 4vw, 36px);
+    }
+
+    header.hero {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 4vw, 36px);
+      background: linear-gradient(120deg, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.03) 100%);
+      border: 2px solid rgba(124,58,237,0.18);
+      border-radius: 22px;
+      padding: clamp(18px, 4vw, 38px) clamp(14px,2vw,38px);
+      box-shadow: 0 8px 40px 0 #818cf811, 0 0 0 4px #5eead411;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      margin-bottom: clamp(14px,2vw,24px);
+      animation: heroGlow 5s linear infinite alternate;
+    }
+    @keyframes heroGlow {
+      0% { box-shadow: 0 0 0 0 var(--grad-2), 0 8px 40px 0 #818cf811; }
+      100% { box-shadow: 0 0 0 12px #5eead420, 0 8px 40px 0 #818cf811; }
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .logo {
+      width: 70px; height: 70px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3), var(--grad-4), var(--grad-1));
+      color: #181e41; font-weight: 900; font-size: 2.5rem;
+      box-shadow: 0 0 0 6px #fff3, 0 4px 16px #818cf855, 0 0 0 10px var(--accent-glow);
+      position: relative;
+      overflow: hidden;
+      animation: pulseGlow 2.5s cubic-bezier(.4,0,.2,1) infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 6px #fff3, 0 4px 16px #818cf855, 0 0 0 10px var(--accent-glow); }
+      50% { box-shadow: 0 0 0 12px #fff5, 0 4px 24px #5eead455, 0 0 0 24px var(--grad-3); }
+    }
+
+    .hero h1 {
+      margin:0;
+      font-size: clamp(1.25rem, 4vw, 2.4rem);
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--grad-2), var(--grad-3), var(--grad-4), var(--grad-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: .4px;
+      line-height: 1.15;
+    }
+    .hero p {
+      margin:0.5rem 0 0 0;
+      color: var(--muted);
+      font-size: clamp(15px,2vw,18px);
+      max-width: 500px;
+    }
+
+    .grid {
+      display: grid;
+      gap: clamp(18px, 2vw, 36px);
+      grid-template-columns: 1fr;
+      margin-top: clamp(18px,4vw,32px);
+    }
+    @media (min-width:980px){
+      .grid { grid-template-columns: 1.25fr .85fr; }
+    }
+
+    .card {
+      background: linear-gradient(120deg, var(--card) 90%, var(--bg-soft) 100%);
+      border: 1.8px solid var(--glass-2);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .18s cubic-bezier(.4,0,.2,1), box-shadow .22s;
+      will-change: transform, box-shadow;
+      position: relative;
+      z-index: 1;
+    }
+    .card:hover {
+      transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 16px 52px #5eead455, 0 0 0 2px var(--grad-3);
+    }
+
+    .card .content {
+      padding: clamp(16px, 3vw, 30px);
+    }
+
+    .banner {
+      display: flex; align-items: flex-start; justify-content: space-between; gap:18px;
+      background: linear-gradient(90deg, #22d3ee22, #818cf822 60%);
+      border: 1.2px solid #818cf855;
+      border-radius: 13px; padding: 12px 16px;
+      margin-bottom: 14px;
+    }
+    .countdown {
+      font-variant-numeric: tabular-nums;
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 1.2rem;
+      letter-spacing: .5px;
+      filter: drop-shadow(0 0 12px #5eead455);
+    }
+
+    .pill {
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-right: 8px;
+      border: 1px solid;
+      display: inline-block;
+      background: linear-gradient(90deg, var(--grad-1), var(--grad-2));
+      color: #181e41;
+      box-shadow: 0 2px 8px #818cf833;
+      transition: background .2s, color .2s;
+      animation: pillPulse 3s infinite alternate;
+    }
+    @keyframes pillPulse {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.15); }
+    }
+    .pill-urgent {
+      background: linear-gradient(90deg, var(--grad-3), var(--grad-4));
+      color: #fff;
+      border-color: var(--grad-3);
+      filter: drop-shadow(0 0 10px #fbbf2440);
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .notice {
+      display: flex; gap:13px; align-items: flex-start;
+      background: linear-gradient(90deg, #818cf822, #5eead422 70%);
+      border: 1px solid var(--grad-2);
+      color: #e0eaff;
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+    .notice svg { min-width: 20px; margin-top:2px; }
+
+    .actions {
+      display: flex; flex-wrap: wrap; gap:10px; align-items:center; justify-content: space-between;
+      margin-top: 10px;
+    }
+    .btn {
+      appearance: none; border: none; cursor: pointer;
+      padding: 13px 22px;
+      border-radius: 13px;
+      font-weight: 800;
+      letter-spacing: .1px;
+      display: inline-flex; align-items: center; gap:10px;
+      transition: transform .09s cubic-bezier(.4,0,.2,1), box-shadow .18s;
+      font-size: 1.05rem;
+      font-family: inherit;
+      box-shadow: 0 2px 10px #818cf822;
+      will-change: transform;
+      position: relative;
+      z-index: 1;
+      outline: none;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--grad-1), var(--grad-2), var(--grad-3));
+      color: #181e41;
+      animation: ctaBounce 1.2s .5s cubic-bezier(.5,1.8,.6,1.1) infinite alternate;
+      box-shadow: 0 6px 20px #7c3aed22;
+    }
+    @keyframes ctaBounce {
+      0% { transform: scale(1); }
+      55% { transform: scale(1.04) translateY(-2px); }
+      100% { transform: scale(1.06) translateY(-4px); }
+    }
+    .btn-primary:focus-visible { box-shadow: 0 0 0 4px var(--ring); }
+    .btn-secondary {
+      background: var(--glass-2);
+      color: var(--text);
+      border: 1.2px solid var(--grad-2);
+    }
+    .btn[disabled] {
+      opacity: .7; cursor: not-allowed; filter: grayscale(.2);
+    }
+    .note {
+      font-size: 13px; color: var(--muted);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 8px 13px; border-radius: 12px;
+      margin-bottom: 4px;
+    }
+
+    /* Aside Card Sections */
+    .side {
+      display: grid; gap: 18px;
+    }
+    .positions {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .chip {
+      background: linear-gradient(90deg, var(--grad-1), var(--grad-2));
+      color: #0e1726;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid #818cf8;
+      box-shadow: 0 2px 8px #5eead420;
+      transition: background .2s, color .2s, box-shadow .2s;
+      cursor: default;
+      will-change: filter;
+      filter: saturate(1.2);
+      animation: chipColor 3s infinite alternate;
+    }
+    @keyframes chipColor {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(30deg); }
+    }
+    .row-2 {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+      margin-bottom: 8px;
+    }
+    @media (min-width:640px){
+      .row-2 { grid-template-columns: repeat(2,1fr); }
+    }
+
+    .salary {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 8px;
+    }
+    .stat {
+      background: var(--glass);
+      border: 1.2px solid #818cf833;
+      border-radius: 11px;
+      padding: 12px 10px;
+      text-align: center;
+      box-shadow: 0 1px 4px #818cf80c;
+    }
+    .stat small { color: var(--muted); display: block; }
+    .stat strong { font-size: 1.2rem; color: var(--grad-2); }
+
+    .timeline {
+      display: grid; gap: 12px;
+      margin-top: 4px;
+    }
+    .tl-item {
+      background: var(--glass);
+      border: 1px solid #818cf822;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .tl-item h4 {
+      margin:0 0 3px 0;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--grad-2);
+    }
+    .tl-item p {
+      margin:0; color: var(--muted); font-size: 14px;
+    }
+
+    ul {
+      margin: 0; padding-left: 20px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer {
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      letter-spacing: 0.03em;
+      opacity: 0.85;
+      padding-bottom: 16px;
+    }
+
+    @media (max-width:600px){
+      header.hero { flex-direction: column; gap: 18px; text-align: center; }
+      .logo { margin: 0 auto; }
+      .card .content { padding: 13px 6vw; }
+      .side { gap: 14px; }
+      .positions { flex-direction: column; gap:8px; align-items: flex-start; }
+      .salary { grid-template-columns: 1fr; gap:8px;}
+    }
+    @media (max-width:400px) {
+      .logo { width: 56px; height: 56px; font-size: 1.8rem;}
+      .hero h1 { font-size: 1.2rem;}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="wrapper">
+    <header class="hero">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">S</div>
+        <div>
+          <h1>Silver Construction Company — Careers</h1>
+          <p>Apply for our exciting vacancies! Upload your documents and fill in your details as required. We look forward to your application.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Left: Main Application Section -->
+      <section class="card">
+        <div class="content">
+          <div class="banner">
+            <div>
+              <span class="pill">Applications Open</span>
+              <span class="pill pill-urgent">First come, first served</span>
+              <div class="hint">Eligibility: Only graduates from 2023, 2024, or 2025 in specific fields. Locations: Bahirdar, Gondar, Mekele.</div>
+            </div>
+            <div class="countdown" id="countdown" aria-live="polite">Calculating…</div>
+          </div>
+
+          <div class="notice" role="status" aria-live="polite">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#aef" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm0 14a1.25 1.25 0 111.25-1.25A1.251 1.251 0 0112 16zm1.5-4.5h-3V7h3z"/>
+            </svg>
+            <div>
+              Submit your application via our official Google Form. Prepare your files before you start to finish faster.
+            </div>
+          </div>
+
+          <div class="actions">
+            <div class="note">
+              Deadline: <b>October 25, 2025</b>. Interviews: <b>November 3–6, 2025</b>.
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn btn-secondary" href="#eligibility">Check Eligibility</a>
+              <a class="btn btn-primary" target="_blank" rel="noopener" href="https://forms.gle/nEpMUpSoLPT3skxn6">
+                Apply Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#181e41" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M14 3l7 7-1.414 1.414L15 7.828V20h-2V7.828l-4.586 4.586L7 10l7-7z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right: Info, Eligibility, Perks -->
+      <aside class="side">
+        <section class="card" id="eligibility">
+          <div class="content">
+            <h3 style="margin:0 0 10px 0; font-weight: 800; color:var(--grad-2)">Eligibility & Locations</h3>
+            <div class="positions">
+              <span class="chip">Office Engineer</span>
+              <span class="chip">Site Engineer</span>
+              <span class="chip">Sales</span>
+              <span class="chip">Auditing & Related</span>
+            </div>
+            <div class="row-2">
+              <div class="note">
+                Graduates only: <b>2023, 2024, or 2025</b>.
+              </div>
+              <div class="note">
+                Locations: <b>Bahirdar, Gondar, Mekele</b>.
+              </div>
+            </div>
+            <div class="note" style="margin-top:10px">
+              Supported fields of study:
+              <br>
+              Civil Engineering; COTM; Business Management & Related; Management & Related; Accounting & Related; Economics; Urban and Planning Engineering & Related; Water and Water Structuring Engineering & Related; Surveying Engineering; Geology.
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="content">
+            <h3 style="margin:0 0 10px 0; font-weight: 800; color:var(--grad-2)">Compensation & Benefits</h3>
+            <div class="salary">
+              <div class="stat">
+                <small>Starting Salary</small>
+                <strong>ETB 16,000</strong>
+              </div>
+              <div class="stat">
+                <small>House Allowance</small>
+                <strong>ETB 500</strong>
+              </div>
+              <div class="stat">
+                <small>Transport Allowance</small>
+                <strong>ETB 500</strong>
+              </div>
+            </div>
+            <div class="note" style="margin-top:12px">
+              Performance-based increments apply after hiring and evaluations.
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="content">
+            <h3 style="margin:0 0 10px 0; font-weight: 800; color:var(--grad-2)">Important Dates</h3>
+            <div class="timeline">
+              <div class="tl-item">
+                <h4>Application Deadline</h4>
+                <p>October 25, 2025 (11:59 PM)</p>
+              </div>
+              <div class="tl-item">
+                <h4>Interview Sessions</h4>
+                <p>November 3–6, 2025</p>
+              </div>
+              <div class="tl-item">
+                <h4>Selection Policy</h4>
+                <p>Limited positions. First applicants will be served first (subject to eligibility).</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="content">
+            <h3 style="margin:0 0 10px 0; font-weight: 800; color:var(--grad-2)">Documents Checklist</h3>
+            <ul>
+              <li>Scanned Temporary Certificate (PDF) — <b>required</b></li>
+              <li>CV/Resume — <b>optional</b></li>
+              <li>National ID (Front) — <b>required</b></li>
+              <li>National ID (Back) — <b>required</b></li>
+              <li>Passport size photo (JPG/Image) — <b>required</b></li>
+            </ul>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      © <span id="year"></span> <b>Silver Construction Company</b>. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Countdown
+    (function(){
+      const el = document.getElementById('countdown');
+      const deadline = new Date('2025-10-25T23:59:59');
+      function fmt(n){ return String(n).padStart(2,'0'); }
+      function tick(){
+        const now = new Date();
+        const diff = deadline - now;
+        if (diff <= 0){
+          el.textContent = 'Applications closed';
+          el.style.color = "#f87171";
+          return;
+        }
+        const d = Math.floor(diff / (1000*60*60*24));
+        const h = Math.floor((diff / (1000*60*60)) % 24);
+        const m = Math.floor((diff / (1000*60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+        el.textContent = `${fmt(d)}d ${fmt(h)}h ${fmt(m)}m ${fmt(s)}s left`;
+        requestAnimationFrameId = requestAnimationFrame(() => setTimeout(tick, 500));
+      }
+      let requestAnimationFrameId;
+      tick();
+      window.addEventListener('beforeunload', () => cancelAnimationFrame(requestAnimationFrameId));
+    })();
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Responsive, animated particles (canvas) background
+    // No external libs needed!
+    (function(){
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let w = window.innerWidth, h = window.innerHeight;
+      function resize(){
+        w = window.innerWidth; h = window.innerHeight;
+        canvas.width = w; canvas.height = h;
+      }
+      window.addEventListener('resize', resize); resize();
+
+      const particles = [];
+      const colors = [
+        'rgba(94,234,212,0.9)',
+        'rgba(124,58,237,0.9)',
+        'rgba(251,191,36,0.9)',
+        'rgba(129,140,248,0.8)',
+        'rgba(244,114,182,0.8)'
+      ];
+      for(let i=0;i<38;i++){
+        particles.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: Math.random()*2+1.5,
+          dx: (Math.random()-0.5)*0.4,
+          dy: (Math.random()-0.5)*0.4,
+          c: colors[Math.floor(Math.random()*colors.length)]
+        });
+      }
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        for(const p of particles){
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle = p.c;
+          ctx.shadowColor = p.c;
+          ctx.shadowBlur = 8;
+          ctx.fill();
+          p.x += p.dx; p.y += p.dy;
+          if(p.x<0||p.x>w) p.dx*=-1;
+          if(p.y<0||p.y>h) p.dy*=-1;
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>
